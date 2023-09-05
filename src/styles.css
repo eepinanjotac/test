@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+.fast{
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both
+}
+
+#themecolors .selector , .cursor {
+    cursor: pointer;
+}
+
+.oculto{
+    display: none;
+}
+
+.fondo-modal-imagen{
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    left: 0px;
+    height: 100%;
+    top: 0px;
+    width: 100%;
+    z-index: 999;
+}
+
+.img-avatar{
+    width: 150px;
+    height: 150px;
+}
+
+.w100{
+    width: 100px;
+}
+.w200{
+    width: 200px;
+}
+
+.avatar{
+    border-radius: 100%;
+    width: 30px;
+}
+
+.importar-clientes{
+    width: 30%;
+    float: left;
+}

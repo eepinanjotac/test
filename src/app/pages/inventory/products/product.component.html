@@ -1,0 +1,183 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="card-body">
+                <form (submit)="createProduct()">
+                    <div class="form-body">
+                        <div class="row p-t-20">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Nombre del producto:*</label>
+                                    <input type="text" id="name" name="name" [(ngModel)]="name" class="form-control"
+                                        placeholder="Plástico">
+                                    <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label">SKU:</label>
+                                    <input type="text" id="sku" [(ngModel)]="sku" name="sku" class="form-control"
+                                        placeholder="PRO-001">
+                                    <!-- <small class="form-control-feedback"> This field has error. </small> -->
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                  <label class="control-label">Unidad:</label>
+                                  <select class="form-control" [(ngModel)]="id_unit" name="id_unit" id="id_unit" tabindex="1">
+                                    <option *ngFor="let item of units" [value]="item.id">{{item.name_units}}</option>
+                                  </select>
+                                </div>
+                              </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                  <label class="control-label">Categoría:</label>
+                                  <select class="form-control" [(ngModel)]="id_category" name="id_category" id="id_category" tabindex="1">
+                                    <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
+                                  </select>
+                                </div>
+                              </div>
+                            
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Descripción:</label>
+                                    <textarea 
+                                    class="form-control" 
+                                    name="description" 
+                                    id="description" 
+                                    [(ngModel)]="description"
+                                    cols="30" 
+                                    rows="3"
+                                    placeholder="Ej: Uso en invernaderos"></textarea>
+                                    <!-- <small class="form-control-feedback"> Select your gender </small>  -->
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Especificaciones:</label>
+                                    <textarea 
+                                        class="form-control" 
+                                        name="specifications" 
+                                        [(ngModel)]="specifications" 
+                                        id="specifications" 
+                                        cols="30" 
+                                        rows="3"
+                                        placeholder="Ej: Verde, 2mm, Japones">
+                                    </textarea>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">Precio de compra sin impuestos:*</label>
+                                    <input type="text" id="pur_price" [(ngModel)]="pur_price"  name="pur_price" class="form-control" placeholder="59.50">
+                                    <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                  <label class="control-label">Iva:</label>
+                                  <select class="form-control" [(ngModel)]="id_iva" name="id_iva" id="id_iva" tabindex="1">
+                                    <option *ngFor="let item of ivas" [value]="item.id">{{item.worth}}</option>
+                                  </select>
+                                </div>
+                              </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">Cantidad para alertar:</label>
+                                    <input type="text" id="mini_stock" [(ngModel)]="mini_stock" name="mini_stock" class="form-control" placeholder="5">
+                                    <!-- <small class="form-control-feedback"> This field has error. </small> -->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">Stock inicial:</label>
+                                    <input type="number" id="stock" [(ngModel)]="stock" name="stock" class="form-control" placeholder="5">
+                                    <!-- <small class="form-control-feedback"> This field has error. </small> -->
+                                </div>
+                            </div>
+                            
+                            <!-- <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Precios de venta:</label>
+                                    <div>
+                                        <label for="prices">Precios:</label>
+                                        <input type="number" [(ngModel)]="newPrice" name="newPrice">
+                                        <button type="button" (click)="addPrice()">Agregar Precio</button>
+                                    </div>
+                                    <div *ngFor="let price of prices; let i = index">
+                                        <input type="number" [(ngModel)]="price.value" name="price{{i}}" disabled>
+
+                                        <button type="button" (click)="removePrice(i)">Eliminar</button>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-md-6">
+                                <label class="control-label">Precios de venta:</label>
+                                <div class="input-group">
+                                    <input type="number" [(ngModel)]="newPrice" name="newPrice" class="form-control"
+                                        placeholder="Precio">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="button" (click)="addPrice()">Agregar Precio</button>
+                                    </span>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Precio #</th>
+                                                <th>Valor</th>
+                                                <th>Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let price of prices; let i = index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{price.value}}</td>
+                                               <!--  <td>
+                                                    <input type="number" [(ngModel)]="price.value" name="price{{i}}" disabled>
+                                                </td> -->
+                                                <td>
+                                                    <!-- <button type="button" (click)="removePrice(i)">Eliminar</button> -->
+                                                    <button type="button" (click)="removePrice(i)" class="btn btn-danger"><i class="ti-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                        
+                                    </table>
+                                </div>
+
+
+                            </div>
+                            <!--/span-->
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="form-actions">
+                        <!-- <button type="submit" (click)="createProduct()" class="btn btn-success"> <i class="fa fa-check"></i> Crear</button> -->
+                       <!--  <button type="button" class="btn btn-inverse">Cancel</button> -->
+                        <button type="submit" class="btn btn-inverse">Crear Producto</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
